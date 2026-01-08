@@ -1,57 +1,68 @@
 
-function locomotive(){
+function loco(){
+ gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger);
+    const locoScroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true,
 
+        // for tablet smooth
+        tablet: { smooth: true },
 
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("#main"),
-  smooth: true,
+        // for mobile
+        smartphone: { smooth: true }
+    });
+    locoScroll.on("scroll", ScrollTrigger.update);
 
+    ScrollTrigger.scrollerProxy("#main", {
+        scrollTop(value) {
+            return arguments.length
+                ? locoScroll.scrollTo(value, 0, 0)
+                : locoScroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+            return {
+                top: 0,
+                left: 0,
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+        }
+    });
 
-  // for tablet smooth
-  tablet: { smooth: true },
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
-
-  // for mobile
-  smartphone: { smooth: true }
-});
-locoScroll.on("", ScrollTrigger.update);
-
-
-ScrollTrigger.scrollerProxy("#main", {
-  scrollTop(value) {
-    return arguments.length
-      ? locoScroll.scrollTo(value, 0, 0)
-      : locoScroll.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return {
-      top: 0,
-      left: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-  }
-
-
-  // follwoing line is not required to work pinning on touch screen
-
-
-  /* pinType: document.querySelector(".smooth-scroll").style.transform
-    ? "transform"
-    : "fixed"*/
-});
-
-
-
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-
-
-ScrollTrigger.refresh();
-
+    ScrollTrigger.refresh();
 }
-locomotive()
+
+function loadingAnimation() {
+
+  tl=gsap.timeline();
+
+   tl.from("#page-1",{
+     opacity:0,
+     duration:0.2
+    
+   })
+
+   tl.from("#page-1",{
+     transform:"scaleX(0.5) scaleY(0.2)  ",
+     duration:2,
+     borderRadius:"150px",
+     ease: "expo.out"
+   })
+   tl.from("nav",{
+     opacity:0,
+     duration:0.2,
+    
+   })
+    tl.from("#page-1 h1, #page-1 p, #page-1 div", {
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.2
+    })
+}
+
 
 function navAnimation() {
     let nav = document.querySelector('nav');
@@ -64,6 +75,7 @@ nav.addEventListener('mouseenter',()=>{
         height: "21.4vh",
         duration: 0.4
     });
+
     tl.to(".nav2 h5",{
         display: "block",
         duration: 0.2
@@ -99,8 +111,6 @@ nav.addEventListener('mouseleave',()=>{
     
 }); }
 
-navAnimation();
-
 
 function page2Transition(){
 
@@ -128,7 +138,7 @@ rightEle.forEach((ele)=>{
 });
 });
 }
-page2Transition()
+
 
 
 function page3Transition()
@@ -137,7 +147,7 @@ function page3Transition()
     let video = document.querySelector(".page3 video");
     pagecentre =  document.querySelector(".page3-centre")
     
-    pagecentre.addEventListener('click',() => {
+    pagecentre.addEventListener('click',function () {
         console.log("sxijhxlas")
        video.play()
        gsap.to(video,{
@@ -148,7 +158,7 @@ function page3Transition()
        })
     });
 
-    video.addEventListener('click',() => {
+    video.addEventListener("click", function ()  {
         console.log("sxijhxlas")
        video.pause()
        gsap.to(video,{
@@ -162,7 +172,6 @@ function page3Transition()
   
 }
 
-page3Transition();
 
 
 function page4transition(){
@@ -192,7 +201,6 @@ ele.addEventListener("mouseleave",()=>{
 
 }
 
-page4transition();
 
 
 
@@ -231,32 +239,31 @@ sec.forEach(ele => {
 
 }
 
-circle();
 
 function mark(){
-
-
-let toe = document.querySelector(".content")
-let safed = document.querySelector(".content span i")
-
-   toe.addEventListener(("click"),()=>{
-    if(safed.style.color==="white"){
-        safed.style.color="grey";
-    }
-    else{
+    
+    
+    let toe = document.querySelector(".content")
+    let safed = document.querySelector(".content span i")
+    
+    toe.addEventListener(("click"),()=>{
+        if(safed.style.color==="white"){
+            safed.style.color="grey";
+        }
+        else{
         safed.style.color="white";
     }
 });
-    let arr = document.querySelector(".arrow")
-    let saaf = document.querySelector(".arrow span i")
-    
-       arr.addEventListener(("click"),()=>{
-        if(saaf.style.color==="grey"){
-             saaf.style.color="white";
-        }
-        else{
-            saaf.style.color="grey";
-        }
+let arr = document.querySelector(".arrow")
+let saaf = document.querySelector(".arrow span i")
+
+arr.addEventListener(("click"),()=>{
+    if(saaf.style.color==="grey"){
+        saaf.style.color="white";
+    }
+    else{
+        saaf.style.color="grey";
+    }
 });
 
 
@@ -267,38 +274,37 @@ let safed = document.querySelector(".content span i")
 }
 
 
-mark();
 
 
 
 
 
 function anisecanima(){
-
-gsap.from(".anisec1 h5",{
-    x:0,
-    duration:1,
-    scrollTrigger:{
-        trigger:".anisec1",
-        scroller:"#main",
-        // markers:true,
-        start:"top 80%",
-        end:"top 10%",
-        scrub:true
-    }
-})
-
-
-
-
-gsap.from(".anisec2 h5",{
-    x:0,
-    duration:1,
-    scrollTrigger:{
-        trigger:".anisec2",
-        scroller:"#main",
-        // markers:true,
-        start:"top 80%",
+    
+    gsap.from(".anisec1 h5",{
+        x:0,
+        duration:1,
+        scrollTrigger:{
+            trigger:".anisec1",
+            scroller:"#main",
+            // markers:true,
+            start:"top 80%",
+            end:"top 10%",
+            scrub:true
+        }
+    })
+    
+    
+    
+    
+    gsap.from(".anisec2 h5",{
+        x:0,
+        duration:1,
+        scrollTrigger:{
+            trigger:".anisec2",
+            scroller:"#main",
+            // markers:true,
+            start:"top 80%",
         end:"top 10%",
         scrub:true
     }
@@ -319,13 +325,207 @@ gsap.from(".anisec3 h5",{
 })
 
 }
-anisecanima();
 
+function wavey1(){
 
+let btn = document.querySelector(".mbtn");
+let topsplit = new SplitType(".button1",{type:"chars"});
+let bottomsplit = new SplitType(".button2",{type:"chars"});
+let topicon = document.querySelector(".button1 i");
+let boticon = document.querySelector(".button2 i");
 
+gsap.set(bottomsplit.chars,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75
+})         
 
+gsap.set(boticon,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75
+})         
 
-gsap.from("#page-1",{
-  transform:"scaleX(0.7) scaleY(0.2)"
-  
+btn.addEventListener("mouseenter",()=>{
+    gsap.to(topsplit.chars,{  
+  yPercent:-100,
+  opacity:0,
+  rotateX:-75,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(bottomsplit.chars,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+
+gsap.to(topicon,{    
+  yPercent:-100,
+  opacity:0,
+  rotateX:-75,
+  delay:0.75,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(boticon,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  delay:0.75,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+
 })
+
+btn.addEventListener("mouseleave",()=>{
+    gsap.to(topsplit.chars,{    // ==>  set the bottom
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(bottomsplit.chars,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(topicon,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  delay:0.75,
+  duration:0.65,
+  ease: 'power3.out'
+})   
+gsap.to(boticon,{    
+  yPercent:100,
+  opacity:0,
+  rotateX:-75,
+  delay:0.75,
+  duration:0.65,
+  ease: 'power3.out'
+})   
+
+})
+
+}
+
+
+function wavey2(){
+
+let btn = document.querySelector(".mbtn1");
+let topsplit = new SplitType(".button11",{type:"chars"});
+let bottomsplit = new SplitType(".button22",{type:"chars"});
+let topicon1 = document.querySelector(".button11 i");
+let boticon1 = document.querySelector(".button22 i");
+
+gsap.set(bottomsplit.chars,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75
+})         
+
+gsap.set(boticon1,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75
+})         
+
+btn.addEventListener("mouseenter",()=>{
+    gsap.to(topsplit.chars,{  
+  yPercent:-100,
+  opacity:0,
+  rotateX:-75,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(bottomsplit.chars,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+
+gsap.to(topicon1,{    
+  yPercent:-100,
+  opacity:0,
+  rotateX:-75,
+  delay:0.55,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(boticon1,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  delay:0.55,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+
+})
+
+btn.addEventListener("mouseleave",()=>{
+    gsap.to(topsplit.chars,{    // ==>  set the bottom
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(bottomsplit.chars,{    // ==>  set the bottom
+  yPercent:100,
+  opacity:0,
+  rotateX:-75,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})         
+gsap.to(topicon1,{    
+  yPercent:0,
+  opacity:1,
+  rotateX:0,
+  delay:0.55,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})   
+gsap.to(boticon1,{    
+  yPercent:100,
+  opacity:0,
+  rotateX:-75,
+  delay:0.55,
+  stagger:0.04,
+  duration:0.65,
+  ease: 'power3.out'
+})   
+
+})
+}
+wavey1();
+wavey2();
+loco();
+
+navAnimation();
+page2Transition()
+page3Transition();
+page4transition();
+circle();
+mark();
+anisecanima();
+loadingAnimation()
