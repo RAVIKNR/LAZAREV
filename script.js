@@ -132,8 +132,8 @@ rightEle.forEach((ele)=>{
 
     ele.addEventListener('mousemove',(dets)=>{
     gsap.to(ele.childNodes[3],{
-        x: dets.x - ele.getBoundingClientRect().x-90 ,
-        y: dets.y - ele.getBoundingClientRect().y-200
+        x: dets.x - ele.getBoundingClientRect().x-40 ,
+        y: dets.y - ele.getBoundingClientRect().y-120
     });
 });
 });
