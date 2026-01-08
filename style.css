@@ -3,31 +3,36 @@
     padding: 0;
     box-sizing: border-box;
     color: white;
+    /* outline: 1px solid red; */
 }
 
-body{
+html,body{
     width: 100%;
     height: 100%;
-    
     font-family: Arial, Helvetica, sans-serif;
+     
 }
 nav{
+    position: fixed;
     background-color: #121212;
     height: 12vh;
     width: 100%;
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 2vw 10.4vw;
+   
      z-index: 10;
 }
 .nav2{
-    padding: 0.8vw 4vw;
+   
+    padding: 1vw 0;
     display: flex;
     gap: 2vw;
     align-items: flex-start;
-    text-wrap: nowrap;
+   
+    position: relative;
+    z-index: 10;
 }
 nav h1{
     font-size: 1.9vw;
@@ -48,7 +53,7 @@ nav h1{
     font-weight: lighter;
     margin-bottom: 1vw;
     position: relative;
-    z-index: 10;
+   
      display: none;
      overflow: hidden;
 }
@@ -73,7 +78,7 @@ nav button{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+   
     text-wrap: nowrap;
     gap: 1vw;
 }
@@ -88,7 +93,7 @@ width: 80%;
     height: 0vh;
     position: absolute;
     top: 100%;
-    background-color: #121212;
+   background-color: #121212;
     z-index: 9;
     border-bottom: 1px solid #fff;
    
@@ -96,9 +101,9 @@ width: 80%;
 
 
 
+
 #page-1{
 
-    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -107,7 +112,8 @@ width: 80%;
     align-items: center;
     
     background-color: #121212;
-    
+    position: relative;
+   
 
 }
 
@@ -288,19 +294,21 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4.5vh;
-    color: black;
+   
 }
 .page3-icon i{
     color: black;
+     font-size: 2.5vw;
+    
 }
 
 .page3{
+    background-color: #000;
     position: relative;
     width: 100%;
     height: 100vh;
     background-image: url(https://lazarev.kiev.ua/la24/reel-cover.webp);
-    object-fit: cover;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -308,9 +316,9 @@ p{
 }
 .page3 h5{
     position: relative;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     background-color: white;
-    padding: 0.6vh;
+    padding: 0.8vh;
     border-radius: 50px;
     margin-top: 0.5vh;
     transition: all 0.5s ease;
@@ -329,25 +337,22 @@ p{
 }
 
 .page3-centre:hover h5{
-    opacity: 1;
     transition: all 0.5s ease;
+    opacity: 1;
     transform: translateY(0);
 }
 
 .page3 video{
-    position: absolute;
     width: 100%;
+    position: absolute;
     height: 100%;
     object-fit: cover;
     transform: scaleX(0.77) scaleY(0);
     opacity: 0;
-    z-index: 999;
+    z-index: 9999;
     border-radius: 30px;
 }
-.page3 img{
-   position: relative;
-   z-index: 999;
-}
+
 
 
 .page4{
@@ -355,6 +360,7 @@ p{
     min-height: 100vh;
     width: 100%;
     padding-bottom: 5vh;
+    position: relative;
 }
 
 .section{
@@ -453,19 +459,38 @@ p{
     justify-content: space-between;
     gap: 10vw;
    padding-bottom: 5vw;
+   
 
 }
+.mbtn1{
+    position: relative;
+     background-color: #0ba34e;
+  padding: 1.5vw 2vw;
+  border-radius: 50px;
+  border: none;
+ 
+  position: sticky;
+  top: 20%;
+  width: 17vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.page5 > button:first-child{
-   position: sticky;
-   top: 20%;
-    left: 10.5vw;
-    background-color: #05a129;
-    padding: 1.5vh 1.5vh;
-    border: none;
-    border-radius: 50px;
-    font-size: 1vw;
-    min-width: 12vw;
+
+.mbtn1 h4 {
+    position: absolute;
+   
+  font-size: 1vw;
+  font-weight: 500;
+  
+}
+.mbtn1 h4 i{
+    
+     position: absolute;
+  padding-left: 0.6vw;
+  font-size: 1vw;
+}
    
 .p{
     min-height: 100vh;
@@ -474,7 +499,7 @@ p{
     justify-content: space-between;
 }
 
-}
+
 
 .right{
      
@@ -485,13 +510,13 @@ p{
 
 .right>p{
     font-size: 1.5vw;
-    padding-right: 4vw;
+    padding-right: vw;
 }
 
 .right span{
     font-size: 0.9vw;
     display: inline-block;
-    width: 12vw;
+    width: 10vw;
 }
 
 .page45{
@@ -789,27 +814,32 @@ summary {
 }
 
 
-.sec7 .button{
-   position: absolute;
-    background: rgb(22, 109, 240);
-    padding: 1vw;
-    border-radius: 50px;
-    border: none;
-    font-size: 0.9vw;
-    height: 2.7vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 15vw;
-    font-weight: 550;
-}
-.secf .button i{
+.mbtn h4{
+    position: absolute;
     font-size: 1vw;
-    padding-left: 1vw;
+    font-weight: 500;
 }
-.secf{
-    padding-top: 1vw;
+.mbtn i{
+    position: absolute;
+    font-size: 1vw;
+    font-weight: 500;
+    padding-left: 0.4vw;
 }
+
+.mbtn{
+position: relative;
+ background: rgb(22, 109, 240);
+   padding: 1.5vw 2vw;
+   border-radius: 50px;
+    border: none;
+     display: flex;
+align-items: center;
+    justify-content: center;
+    width: 16vw;
+}
+
+
+
 .secg p{
     font-size: 1.5vw;
     padding-bottom: 8vw;
@@ -824,12 +854,13 @@ summary {
 
 .anisec{
     width: 100%;
-    height: 44vw;
+    max-height: 44vw;
     /* background-color: #0da34e; */
     display: flex;
     justify-content: center;
     align-items: flex-start;
     border-top:1px solid #dadada ;
+    padding-bottom: 4vw;
 }
 .anifont{
 
@@ -931,5 +962,71 @@ summary {
 }
 .anisec3 h5:nth-child(4){
     transform: translateX(40%);
+}
+
+
+.thanks{
+   
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    padding: 3vw 4vw;
+    width: 100%;
+    height: 8vw;
+    
+}
+
+.thanksec1 p , .thanksec2 p{
+    font-size: 2vw;
+    color: #fff;
+}
+
+.ending{
+    width: 100%;
+    height: 50vh;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    padding: 6vh 9vw;
+    padding-top: 7vh;
+    
+}
+.endsec1{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #dadada;
+}
+.endsec1 h4{
+    
+    text-transform:uppercase;
+    font-size: 1vw;
+    font-weight: 400;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    color: grey;
+}
+.endsec1 h5{
+    text-transform:uppercase;
+    font-size: 0.8vw;
+    font-weight: 500;
+     padding-bottom: 1.2vw;
+}
+.endsec1 h5:hover{
+     transition: all 0.3s ease;
+     color: rgb(51, 48, 48);
+}
+
+.endsec2{
+    width: 50%;
+   text-align: right;
+}
+.endsec2 h2{
+    font-size: 4.5vw;
+    text-transform: uppercase;
+}
+.endsec2 h4{
+    font-size: 2vw;
+    text-transform: uppercase;
 }
 
